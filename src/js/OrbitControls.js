@@ -548,6 +548,8 @@ var OrbitControls = function ( object, domElement ) {
 				scope.update();
 				break;
 
+      default:
+
 		}
 
 	}
@@ -695,6 +697,8 @@ var OrbitControls = function ( object, domElement ) {
 
 				break;
 
+      default:
+
 		}
 
 		if ( state !== STATE.NONE ) {
@@ -739,6 +743,8 @@ var OrbitControls = function ( object, domElement ) {
 				handleMouseMovePan( event );
 
 				break;
+
+      default:
 
 		}
 

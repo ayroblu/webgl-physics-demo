@@ -30,7 +30,6 @@ var softBodies = [];
 var margin = 0.05;
 var transformAux1 = new Ammo.btTransform();
 var softBodyHelpers = new Ammo.btSoftBodyHelpers();
-var armMovement = 0;
 // - Main code -
 //init();
 //animate();
@@ -126,7 +125,8 @@ function processGeometry( bufGeometry ) {
   // Obtain a Geometry
   var geometry = new THREE.Geometry().fromBufferGeometry( bufGeometry );
   // Merge the vertices so the triangle soup is converted to indexed triangles
-  var vertsDiff = geometry.mergeVertices();
+  //var vertsDiff = geometry.mergeVertices();
+  geometry.mergeVertices();
   // Convert again to BufferGeometry, indexed
   var indexedBufferGeom = createIndexedBufferGeometryFromGeometry( geometry );
   // Create index arrays mapping the indexed vertices to bufGeometry vertices
@@ -138,16 +138,16 @@ function createIndexedBufferGeometryFromGeometry( geometry ) {
   var bufferGeom = new THREE.BufferGeometry();
   var vertices = new Float32Array( numVertices * 3 );
   var indices = new ( numFaces * 3 > 65535 ? Uint32Array : Uint16Array )( numFaces * 3 );
-  for ( var i = 0; i < numVertices; i++ ) {
+  for ( let i = 0; i < numVertices; i++ ) {
     var p = geometry.vertices[ i ];
-    var i3 = i * 3;
+    let i3 = i * 3;
     vertices[ i3 ] = p.x;
     vertices[ i3 + 1 ] = p.y;
     vertices[ i3 + 2 ] = p.z;
   }
-  for ( var i = 0; i < numFaces; i++ ) {
+  for ( let i = 0; i < numFaces; i++ ) {
     var f = geometry.faces[ i ];
-    var i3 = i * 3;
+    let i3 = i * 3;
     indices[ i3 ] = f.a;
     indices[ i3 + 1 ] = f.b;
     indices[ i3 + 2 ] = f.c;
@@ -308,7 +308,7 @@ function updatePhysics( deltaTime ) {
   // Step world
   physicsWorld.stepSimulation( deltaTime, 10 );
   // Update soft volumes
-  for ( var i = 0, il = softBodies.length; i < il; i++ ) {
+  for ( let i = 0, il = softBodies.length; i < il; i++ ) {
     var volume = softBodies[ i ];
     var geometry = volume.geometry;
     var softBody = volume.userData.physicsBody;
@@ -344,7 +344,7 @@ function updatePhysics( deltaTime ) {
     geometry.attributes.normal.needsUpdate = true;
   }
   // Update rigid bodies
-  for ( var i = 0, il = rigidBodies.length; i < il; i++ ) {
+  for ( let i = 0, il = rigidBodies.length; i < il; i++ ) {
     var objThree = rigidBodies[ i ];
     var objPhys = objThree.userData.physicsBody;
     var ms = objPhys.getMotionState();
