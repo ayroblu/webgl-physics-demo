@@ -28,5 +28,4 @@ var yb=[ey,ah,Vl,jg,op,_c,df,ag,Xf,oc,ld,Oc,de,le,Vc,Es,Fg,xc,$d,Fl,Bi,sf,ey,ey,
   return Module;
 };
 
-var Ammo = AmmoLib();
-export default Ammo
+Ammo = AmmoLib();

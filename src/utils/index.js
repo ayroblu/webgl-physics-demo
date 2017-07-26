@@ -1,8 +1,10 @@
 import Detector from '../js/Detector'
-import Ammo from '../js/ammo'
+//import Ammo from '../js/ammo'
 import OrbitControls from '../js/OrbitControls'
-import THREE from 'three'
+import * as THREE from 'three'
+import Stats from 'stats.js'
 
+var Ammo = window.Ammo
 // Detects webgl
 if ( ! Detector.webgl ) {
   Detector.addGetWebGLMessage();
