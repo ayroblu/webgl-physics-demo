@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import {init, animate} from './utils'
+//import {init, animate} from './utils'
+import {loadTextures} from './rainEffect/refactored'
 import './App.css'
 
 class App extends Component {
   componentDidMount(){
-    init()
-    animate()
+    //init()
+    //animate()
+    loadTextures()
   }
   render() {
     return (

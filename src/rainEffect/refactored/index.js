@@ -237,7 +237,7 @@ function updateWeather(){
   let hash=window.location.hash;
   let currentSlide=null;
   let currentNav=null;
-  if(hash!=""){
+  if(hash!==""){
     currentSlide = document.querySelector(hash);
   }
   if(currentSlide==null){
