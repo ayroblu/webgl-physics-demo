@@ -1,6 +1,6 @@
-import Detector from '../js/Detector'
+import Detector from './Detector'
 //import Ammo from '../js/ammo'
-import OrbitControls from '../js/OrbitControls'
+import OrbitControls from './OrbitControls'
 import * as THREE from 'three'
 import Stats from 'stats.js'
 
