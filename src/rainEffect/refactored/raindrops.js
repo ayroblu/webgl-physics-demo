@@ -1,5 +1,4 @@
-import times from "./times.js";
-import createCanvas from "./create-canvas.js";
+import createCanvas from "./create-canvas";
 import {random, chance} from "./random";
 
 let dropSize=64;
@@ -234,7 +233,7 @@ Raindrops.prototype={
     }
     if(this.options.raining){
       this.dropletsCounter+=this.options.dropletsRate*timeScale*this.areaMultiplier;
-      times(this.dropletsCounter,(i)=>{
+      Array(this.dropletsCounter).fill().map(()=>{
         this.dropletsCounter--;
         this.drawDroplet(
           random(this.width/this.scale),

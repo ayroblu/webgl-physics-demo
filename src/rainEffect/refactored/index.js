@@ -4,7 +4,6 @@ import Raindrops from "./raindrops";
 import loadImages from "./image-loader";
 import createCanvas from "./create-canvas";
 import TweenLite from 'gsap';
-import times from './times';
 import {random,chance} from './random';
 
 let textureRainFg, textureRainBg,
@@ -292,7 +291,7 @@ function flash(baseBg,baseFg,flashBg,flashFg){
   }
 
   let lastFlash=transitionFlash(1);
-  times(random(2,7),(i)=>{
+  Array(random(2,7)).fill().map(()=>{
     lastFlash=lastFlash.then(()=>{
       return transitionFlash(random(0.1,1))
     })
