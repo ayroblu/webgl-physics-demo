@@ -18,11 +18,11 @@ let textureFg,
   textureBg,
   textureBgCtx;
 
-let textureBgSize={
+const textureBgSize={
   width:384,
   height:256
 }
-let textureFgSize={
+const textureFgSize={
   width:96,
   height:64
 }
@@ -37,9 +37,9 @@ let weatherData=null;
 let curWeatherData=null;
 let blend={v:0};
 
-export function loadTextures(){
+export async function loadTextures(){
   console.log('loadTextures')
-  loadImages([
+  let images = await loadImages([
     {name:"dropAlpha",src:"img/drop-alpha.png"},
     {name:"dropColor",src:"img/drop-color.png"},
 
@@ -57,27 +57,27 @@ export function loadTextures(){
 
     {name:"textureDrizzleFg",src:"img/weather/texture-drizzle-fg.png"},
     {name:"textureDrizzleBg",src:"img/weather/texture-drizzle-bg.png"},
-  ]).then((images)=>{
-    textureRainFg = images.textureRainFg.img;
-    textureRainBg = images.textureRainBg.img;
+  ])
+  images = images.map(i=>i.img)
+  textureRainFg = images.textureRainFg
+  textureRainBg = images.textureRainBg
 
-    textureFalloutFg = images.textureFalloutFg.img;
-    textureFalloutBg = images.textureFalloutBg.img;
+  textureFalloutFg = images.textureFalloutFg
+  textureFalloutBg = images.textureFalloutBg
 
-    textureStormLightningFg = images.textureStormLightningFg.img;
-    textureStormLightningBg = images.textureStormLightningBg.img;
+  textureStormLightningFg = images.textureStormLightningFg
+  textureStormLightningBg = images.textureStormLightningBg
 
-    textureSunFg = images.textureSunFg.img;
-    textureSunBg = images.textureSunBg.img;
+  textureSunFg = images.textureSunFg
+  textureSunBg = images.textureSunBg
 
-    textureDrizzleFg = images.textureDrizzleFg.img;
-    textureDrizzleBg = images.textureDrizzleBg.img;
+  textureDrizzleFg = images.textureDrizzleFg
+  textureDrizzleBg = images.textureDrizzleBg
 
-    dropColor = images.dropColor.img;
-    dropAlpha = images.dropAlpha.img;
+  dropColor = images.dropColor
+  dropAlpha = images.dropAlpha
 
-    init();
-  });
+  init();
 }
 
 function init(){
